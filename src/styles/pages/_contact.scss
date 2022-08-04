@@ -1,0 +1,176 @@
+.contact-content {
+  background: $color-3;
+  border-radius: $border-radius;
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 20% 45% 35%;
+  grid-template-areas:
+    "header"
+    "contact"
+    "social";
+
+  .header {
+    grid-area: "header";
+    width: 100%;
+    position: relative;
+    background-color: $color-1;
+    height: 340px;
+
+    &:before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: url(../../media/map.jpg) no-repeat center top / cover;
+    }
+
+    &:after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 30px;
+      background: url(../../media/shape.svg) no-repeat center / cover;
+    }
+  }
+
+  .contact-box {
+    grid-area: "contact";
+    background-color: $color-5;
+    margin: 0 auto;
+    padding: 1rem 3rem;
+    border-radius: $border-radius;
+    z-index: 2;
+    box-shadow: 0 3px 10px $black;
+    width: 50%;
+    min-width: 440px;
+    min-height: 200px;
+
+    h1 {
+      text-align: center;
+      margin-top: 0.3rem;
+      position: relative;
+      color: $color-2;
+
+      &:after {
+        content: "";
+        height: 1px;
+        width: 50%;
+        background: $color-1;
+        position: absolute;
+        bottom: -25px;
+        left: 50%;
+        transform: translate(-50%);
+      }
+    }
+
+    ul {
+      margin-top: 3.5rem;
+
+
+
+      li {
+        display: flex;
+        border-radius: $border-radius;
+        margin-bottom: .6rem;
+        overflow: hidden;
+
+        span {
+          font-size: 1.2rem;
+          padding: 0.5rem 0.8rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        span:nth-child(1) {
+          background: $color-3;
+          color: $black;
+        }
+
+        span:nth-child(2) {
+          background: #fdfdfd;
+          color: $black;
+          flex-grow: 2;
+          padding: 0.4rem;
+        }
+
+        span:nth-child(3) {
+          background: $color-1;
+          color: $color-3;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .social-network {
+    grid-area: "social";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ul {
+      display: flex;
+      text-align: center;
+      width: 100%;
+      justify-content: space-around;
+
+      a {
+        width: 140px;
+        font-size: 1.2rem;
+        background: $color-5;
+        border-radius: $border-radius;
+        display: inline-block;
+        padding: 0.7rem 0;
+        box-shadow: $shadow;
+        transform: scaleY(0);
+        transform-origin: center;
+        transition: 0.2s ease;
+        transition: scale 0.1s;
+
+        &:hover {
+          background: $color-4;
+        }
+
+        h4 {
+          margin-bottom: 0.3rem;
+        }
+      }
+
+      @mixin networkAnim($timeout) {
+        animation: pop 1s forwards;
+        animation-delay: $timeout;
+      }
+
+      @keyframes pop {
+        to {
+          transform: scaleY(1);
+        }
+      }
+
+      @for $i from 1 through 3 {
+        a:nth-child(#{$i}) {
+          @include networkAnim($i * .4s)
+        }
+      }
+    }
+
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+  .contact-content {
+
+    span {
+      font-size: .9rem !important;
+    }
+
+    h4 {
+      font-size: .9rem !important;
+    }
+  }
+}

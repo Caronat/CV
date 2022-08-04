@@ -1,0 +1,63 @@
+.home-content {
+  background: linear-gradient(105deg, $color-1 50%, transparent 100%);
+  min-height: $min-height;
+  width: 100%;
+  min-height: 500px;
+  border-radius: $border-radius;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: inherit;
+    background: url("../../media/home-cover.jpg")
+      no-repeat center/cover;
+    z-index: -1;
+    filter: brightness(30%);
+  }
+
+  .content {
+    position: absolute;
+    top: 20%;
+    left: 13%;
+    font-family: $font-1;
+
+    h1 {
+      font-size: clamp(24px, 5vw, 60px);
+      font-family: $font-3;
+      color: $color-5;
+      text-transform: uppercase;
+      text-shadow: 3px 6px 2px $black;
+    }
+    h2 {
+      font-size: clamp(20px, 4vw, 48px);
+      padding: 1.5rem 0 7rem;
+      color: $color-3;
+      text-shadow: 1px 4px 1px $black;
+    }
+    .pdf {
+      a {
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        color: $color-1;
+        background: $color-5;
+        padding: 1rem 2rem;
+        border-radius: $border-radius;
+        box-shadow: 0 5px 1px rgb(15, 15, 15);
+        transition: 0.2s ease;
+
+        &:hover {
+          background: $color-3;
+          color: $color-2;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .home-content {
+    margin: 0 !important;
+  }
+}

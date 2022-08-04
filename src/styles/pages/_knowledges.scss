@@ -1,0 +1,228 @@
+.knowledges-content {
+  min-height: $min-height;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 38% 1fr 1fr;
+  grid-template-rows: 75% 25%;
+  grid-template-areas:
+    "HardSkills Experiences Experiences"
+    "SoftSkills SoftSkills Hobbies";
+
+  .hard-skills-container,
+  .experiences-container,
+  .soft-skills-container,
+  .hobbies-container {
+    background: $color-2;
+    border-radius: $border-radius;
+    padding: 0.8rem;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.9rem;
+    font-family: $font-2;
+    color: $color-5;
+    text-transform: uppercase;
+  }
+
+  .hard-skills-container {
+    grid-area: HardSkills;
+    margin-bottom: 0.5rem;
+
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      color: $white;
+
+      span {
+
+        &:nth-child(2):before,
+        &:nth-child(3):before {
+          content: "";
+          background-color: rgba(180, 179, 179, 0.5);
+          position: absolute;
+          height: 310px;
+          width: 1px;
+          transform: translate(20px, 25px);
+        }
+      }
+    }
+
+    .skills-list {
+      padding-top: 0.5rem;
+      direction: rtl;
+
+      li {
+        padding-right: 2rem;
+        color: $white;
+      }
+
+      .progress-bar {
+        transform: rotate(180deg);
+        height: 0.4rem;
+        background: transparent;
+        border-radius: 50px;
+        margin-top: 0.2rem;
+        position: relative;
+
+        &:after {
+          content: "";
+          position: absolute;
+          background: $color-3;
+          border-radius: 50px;
+          height: 0.4rem;
+          width: 0%;
+          animation: line 1.2s ease-out forwards;
+
+          @keyframes line {
+            to {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .experiences-container {
+    grid-area: Experiences;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 8% 1fr 1fr;
+    grid-template-areas:
+      "title"
+      "exp1"
+      "exp2";
+
+    h3 {
+      grid-area: title;
+    }
+
+    .exp-1 {
+      grid-area: exp1;
+    }
+
+    .exp-2 {
+      grid-area: exp2;
+    }
+
+    h4 {
+      font-size: 1.1rem;
+      color: $color-5;
+    }
+
+    h5 {
+      color: $color-3;
+      padding: 0.5rem 0 0.5rem 1rem;
+    }
+
+    p {
+      text-align: justify;
+      padding: 0 1rem;
+    }
+  }
+
+  .soft-skills-container {
+    grid-area: SoftSkills;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+
+      li {
+        width: 33%;
+        padding: 0.3rem 1rem 0.3rem 2rem;
+        display: flex;
+        align-items: center;
+
+        .react-icons {
+          position: relative;
+          transform: translate(-1rem);
+          color: $color-5;
+        }
+      }
+    }
+  }
+
+  .hobbies-container {
+    grid-area: Hobbies;
+    margin-left: 0.5rem;
+
+    ul {
+      height: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      li {
+        padding-left: 3rem;
+
+        .react-icons {
+          position: absolute;
+          transform: translate(-2rem);
+          color: $color-5;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .knowledges-content {
+    h3 {
+      font-size: 1.2rem !important;
+    }
+
+    .hard-skills-container,
+    .experiences-container,
+    .soft-skills-container,
+    .hobbies-container {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .knowledges-content {
+    h4 {
+      font-size: 0.9rem !important;
+    }
+
+    h5 {
+      font-size: 0.6rem !important;
+      padding: 0.2rem 1rem !important;
+    }
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .knowledges-content {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 1fr 1fr 180px 180px !important;
+
+    .hard-skills-container {
+      grid-area: 1 !important;
+    }
+
+    .experiences-container {
+      grid-area: 2 !important;
+      margin-left: 0;
+    }
+
+    .soft-skills-container {
+      grid-area: 3 !important;
+    }
+
+    .hobbies-container {
+      grid-area: 4 !important;
+      margin-top: 0.5rem;
+      margin-left: 0;
+    }
+  }
+}
